@@ -42,3 +42,9 @@ The SAMMI sail is meant to be used with the SAMMI bot, it simply redirects
 traffic between your SAMMI bot and SoH. You can configure the sail with env
 variables to point to your SAMMI's webhook endpoint with SAMMI_WEBHOOK_URL and
 have SAMMI point to the Sail's endpoint at http://localhost:43383
+
+### Discord Sail
+
+Have your friends select one of your Discord bot's reactions to manipulate your
+SoH playthrough. Just set up your bot (instructions included), put in your key
+and Channel ID, connect to localhost:43383, and stream to your friends!
