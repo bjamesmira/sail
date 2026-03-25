@@ -354,10 +354,8 @@ async function handleReaction(event: {
   if (!handler) return;
 
   if (TIMED_COMMANDS.has(cmdName)) {
-    // Timed effects send their own flavor via TIMED_FLAVOR inside timedEffect
     handler(username, [], () => removeUserReaction(event.message_id, emoji, event.user_id));
   } else {
-    // Instant effects: remove reaction and send flavor immediately
     await removeUserReaction(event.message_id, emoji, event.user_id);
     handler(username, []);
     const flavor = COMMAND_FLAVOR[cmdName];
@@ -407,7 +405,6 @@ function handleMessage(msg: {
   handler(msg.author.username, args);
   console.log(`[Discord] ${msg.author.username} fired: !${cmd}`);
 
-  // Timed commands send their own flavor inside timedEffect, instant ones send here
   if (!TIMED_COMMANDS.has(cmd)) {
     const flavor = COMMAND_FLAVOR[cmd];
     if (flavor) sendDiscordMessage(flavor(msg.author.username));
